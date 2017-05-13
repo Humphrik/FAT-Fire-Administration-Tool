@@ -1,15 +1,6 @@
 
-/*
- * Author Ahmed Abdelhalim - 2009
- * Email: englemo@hotmail.com
- * Please do not remove the above lines
- */
-
 package remoteclient;
-
-/**
- * Used to represent commands which can be sent by the server
- */
+//maps integers to actions
 public enum EnumCommands {
     PRESS_MOUSE(-1),
     RELEASE_MOUSE(-2),

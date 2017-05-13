@@ -46,7 +46,7 @@ public class Initializer {
 		// Text boxes and  their corresponding headers.
 		header = new JLabel("Fire Administration Tool");
 		header.setPreferredSize(new Dimension(325, 32));
-		header.setFont(header.getFont().deriveFont(28.0f));
+		header.setFont(header.getFont().deriveFont(20.0f));
 		// Title Banner
 		button = new JButton("Confirm");
 		button.addActionListener(new ActionListener() {

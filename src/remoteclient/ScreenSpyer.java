@@ -1,8 +1,3 @@
-/*
- * Author Ahmed Abdelhalim - 2009
- * Email: englemo@hotmail.com
- * Please do not remove the above lines
- */
 
 package remoteclient;
 
@@ -14,9 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import javax.swing.ImageIcon;
 
-/**
- * This class is responisble for sending sreenshot every predefined duration
- */
+//this method sends screenshots
 class ScreenSpyer extends Thread {
 
     Socket socket = null; 
@@ -38,10 +31,6 @@ class ScreenSpyer extends Thread {
         try{
             //Prepare ObjectOutputStream
             oos = new ObjectOutputStream(socket.getOutputStream());
-            /*
-             * Send screen size to the server in order to calculate correct mouse
-             * location on the server's panel
-             */
             oos.writeObject(rectangle);
         }catch(IOException ex){
             ex.printStackTrace();
@@ -50,12 +39,7 @@ class ScreenSpyer extends Thread {
        while(continueLoop){
             //Capture screen
             BufferedImage image = robot.createScreenCapture(rectangle);
-            /* I have to wrap BufferedImage with ImageIcon because BufferedImage class
-             * does not implement Serializable interface
-             */
             ImageIcon imageIcon = new ImageIcon(image);
-
-            //Send captured screen to the server
             try {
                 System.out.println("before sending image");
                 oos.writeObject(imageIcon);
@@ -65,9 +49,8 @@ class ScreenSpyer extends Thread {
                ex.printStackTrace();
             }
 
-            //wait for 100ms to reduce network traffic
             try{
-                Thread.sleep(100);
+            	Thread.sleep(100);
             }catch(InterruptedException e){
                 e.printStackTrace();
             }

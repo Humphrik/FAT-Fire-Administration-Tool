@@ -16,47 +16,36 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * This class is responsible for connecting to the server
- * and starting ScreenSpyer and ServerDelegate classes
- */
 public class ClientInitiator {
 
     Socket socket = null;
 
     public static void main(String[] args){
-        String ip = args[0]; // JOptionPane.showInputDialog("Please enter server IP");
-        String port = args[1]; // JOptionPane.showInputDialog("Please enter server port");
+        String ip = args[0]; 
+        String port = args[1];
         new ClientInitiator().initialize(ip, Integer.parseInt(port));
     }
 
     public void initialize(String ip, int port ){
 
-        Robot robot = null; //Used to capture the screen
-        Rectangle rectangle = null; //Used to represent screen dimensions
+        Robot robot = null;
+        Rectangle rectangle = null; 
 
         try {
             System.out.println("Connecting to server ..........");
             socket = new Socket(ip, port);
             System.out.println("Connection Established.");
-
-            //Get default screen device
+            
             GraphicsEnvironment gEnv=GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice gDev=gEnv.getDefaultScreenDevice();
 
-            //Get screen dimensions
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             rectangle = new Rectangle(dim);
 
-            //Prepare Robot object
             robot = new Robot(gDev);
 
-            //draw client gui
             drawGUI();
-            //ScreenSpyer sends screenshots of the client screen
             new ScreenSpyer(socket,robot,rectangle);
-            //ServerDelegate recieves server commands and execute them
             new ServerDelegate(socket,robot);
         } catch (UnknownHostException ex) {
             ex.printStackTrace();

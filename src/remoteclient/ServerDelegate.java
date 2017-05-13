@@ -1,8 +1,4 @@
-/*
- * Author Ahmed Abdelhalim - 2009
- * Email: englemo@hotmail.com
- * Please do not remove the above lines
- */
+
 package remoteclient;
 
 import java.awt.Robot;
@@ -10,9 +6,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-/*
- * Used to recieve server commands then execute them at the client side
- */
 class ServerDelegate extends Thread {
 
     Socket socket = null;
@@ -33,7 +26,6 @@ class ServerDelegate extends Thread {
             scanner = new Scanner(socket.getInputStream());
 
             while(continueLoop){
-                //recieve commands and respond accordingly
                 System.out.println("Waiting for command");
                 int command = scanner.nextInt();
                 System.out.println("New command: " + command);
