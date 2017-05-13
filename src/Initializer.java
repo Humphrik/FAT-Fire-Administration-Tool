@@ -64,7 +64,7 @@ public class Initializer {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				//frame.dispose();
 				if(userType.getSelectedItem().equals("Client"))
 					remoteclient.ClientInitiator.main(new String[] {ipBox.getText(), portBox.getText()} );
 				else
