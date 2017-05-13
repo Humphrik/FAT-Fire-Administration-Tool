@@ -19,7 +19,7 @@ public class ServerInitiator {
     private JDesktopPane desktop = new JDesktopPane();
 
     public static void main(String args[]){
-        String port = args[0]; // JOptionPane.showInputDialog("Please enter listening port");
+        String port = args[0]; //JOptionPane.showInputDialog("Please enter listening port");
         new ServerInitiator().initialize(Integer.parseInt(port));
     }
 
