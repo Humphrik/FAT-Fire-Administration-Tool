@@ -3,10 +3,14 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,11 +27,11 @@ public class Initializer {
 	private JComboBox<String> userType;
 	private JButton button;
 	private GridBagConstraints c;
-	
+	private Image image;
 	public void initialize(String[] args) {
 		//Creates the setup gui.
 		frame = new JFrame("Fire Administration Tool");
-		frame.setSize(500, 300);
+		frame.setSize(350, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -44,9 +48,17 @@ public class Initializer {
 		ipText = new JLabel("IPv4 Address");
 		portText = new JLabel("Port Number");
 		// Text boxes and  their corresponding headers.
-		header = new JLabel("Fire Administration Tool");
-		header.setPreferredSize(new Dimension(325, 32));
+		header = new JLabel();
+		header.setPreferredSize(new Dimension(325, 100));
 		header.setFont(header.getFont().deriveFont(20.0f));
+		try {
+			// Set every image.
+			image = ImageIO.read(Initializer.class.getResource("Picture1.png"));
+		} catch (IOException e) {
+			System.out.println("An image didn't load!");
+		}
+		header.setIcon(new ImageIcon(image.getScaledInstance(325, 100, Image.SCALE_SMOOTH)));
+		
 		// Title Banner
 		button = new JButton("Confirm");
 		button.addActionListener(new ActionListener() {
