@@ -35,7 +35,7 @@ public class Initializer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
-		// Formats the frame of the GUI.
+		
 		panel = new JPanel(new GridBagLayout());
 		// Adds a component container with a grid alignment.
 		c = new GridBagConstraints();
